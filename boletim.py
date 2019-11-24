@@ -9,7 +9,7 @@ index = input("digite o que deseja fazer: " +
 
 boletim = {}
 
-while index != "4":
+while index != "5":
     if index == "1":
         qtdAlunos = int(input("digite a quantidade de alunos que deseja adicionar as notas: "))
         for i in range(qtdAlunos):
