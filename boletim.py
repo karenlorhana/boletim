@@ -61,8 +61,10 @@ while index != "4":
         situacaoAluno = input("digite o nome do aluno que deseja ver a situação: ").upper()
         if situacaoAluno in boletim.keys():
             notas = boletim[situacaoAluno]
-            mediaFinal = sum(notas) / len(notas)
+            mediaFinal = sum(notas)/len(notas)
             if mediaFinal > 7:
                 print(situacaoAluno+" foi aprovado")
+                print(boletim[situacaoAluno])
             else:
                 print(situacaoAluno+" foi reprovado")
+                print(boletim[situacaoAluno])
