@@ -15,8 +15,9 @@ while index != "4":
         for i in range(qtdAlunos):
             print()
             nomeAluno = input("digite o nome do aluno: ").upper()
+            qtdNotas = int(input("digite a quantidade de notas que deseja adicionar para "+nomeAluno+" :"))
             notas = []
-            for x in range(2):
+            for x in range(qtdNotas):
                 notasAlunos = float(input("digite a nota de "+nomeAluno+": "))
                 notas.append(notasAlunos)
             boletim[nomeAluno] = notas
@@ -58,11 +59,14 @@ while index != "4":
         print(boletim)
 
     if index == "4":
+        print()
+        print(boletim)
+        print()
         situacaoAluno = input("digite o nome do aluno que deseja ver a situação: ").upper()
         if situacaoAluno in boletim.keys():
             notas = boletim[situacaoAluno]
             mediaFinal = sum(notas)/len(notas)
-            if mediaFinal > 7:
+            if mediaFinal >= 7:
                 print(situacaoAluno+" foi aprovado")
                 print(boletim[situacaoAluno])
             else:
