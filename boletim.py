@@ -1,43 +1,48 @@
-index = input("digite o que deseja fazer: " +
-              "\n"+"1 - adicionar notas" +
-              "\n"+"2 - calcular média" +
-              "\n"+"3 - alterar nota" +
-              "\n"+"4 - ver situação do aluno"+
-              "\n"+"5 - mostrar todas as notas" +
-              "\n"+"6 - sair"+
+print("digite o que deseja fazer: " )
+index = input("\n" +"1 - adicionar notas" +
+              "\n" + "2 - calcular média" +
+              "\n" + "3 - alterar nota" +
+              "\n" + "4 - adicionar mais uma nota" +
+              "\n" + "5 - ver situação do aluno" +
+              "\n" + "6 - mostrar todas as notas" +
+              "\n" + "7 - sair" +
               "\n"
               )
 
 boletim = {}
 
-while index != "6":
+while index != "7":
+
+#adicionar notas e alunos
     if index == "1":
         qtdAlunos = int(input("digite a quantidade de alunos que deseja adicionar as notas: "))
         qtdNotas = int(input("digite a quantidade de notas que deseja adicionar para os alunos"))
-
         for i in range(qtdAlunos):
             print()
             nomeAluno = input("digite o nome do aluno: ").upper()
             notas = []
-            #medias = []
             for x in range(qtdNotas):
                 notasAlunos = float(input("digite a nota de "+nomeAluno+": "))
                 notas.append(notasAlunos)
             boletim[nomeAluno] = notas
-            #boletim[nomeAluno] = medias
+        print()
+        print("notas registradas com sucesso!")
         print()
         print(boletim)
     print()
-    index = input("digite o que deseja fazer: " +
-                  "\n" + "1 - adicionar notas" +
+
+    print("digite o que deseja fazer: ")
+    index = input("\n" + "1 - adicionar notas" +
                   "\n" + "2 - calcular média" +
                   "\n" + "3 - alterar nota" +
-                  "\n" + "4 - ver situação do aluno"
-                  "\n" + "5 - mostrar todas as notas" +
-                  "\n" + "6 - sair" +
+                  "\n" + "4 - adicionar mais uma nota" +
+                  "\n" + "5 - ver situação do aluno" +
+                  "\n" + "6 - mostrar todas as notas" +
+                  "\n" + "7 - sair" +
                   "\n"
                   )
 
+#calcular média do aluno
     if index == "2":
         print()
         print(boletim)
@@ -49,24 +54,54 @@ while index != "6":
             print()
             print("a média de "+buscarAluno+" é: ", media)
         else:
+            print()
             print("o aluno não está cadastrado")
 
+#alterar nota do aluno
     if index == "3":
         print()
         print(boletim)
         print()
         editarNotaAluno = input("digite o nome do aluno que deseja editar as notas: ").upper()
         if editarNotaAluno in boletim.keys():
-            for i in range(2):
+            print()
+            print(boletim[editarNotaAluno])
+            print()
+            notaExistente = float(input("digite a nota de "+editarNotaAluno+" que deseja alterar: "))
+            if notaExistente in boletim[editarNotaAluno]:
                 novaNota = float(input("digite a nova nota para "+editarNotaAluno+": "))
+                boletim[editarNotaAluno].remove(notaExistente)
                 boletim[editarNotaAluno].append(novaNota)
-        boletim[editarNotaAluno].pop(0)
-        boletim[editarNotaAluno].pop(0)
-
+                print()
+                print("nota alterada com sucesso!")
+            else:
+                print("a nota que foi inserida não está cadastrada")
+        else:
+            print(editarNotaAluno+" não está cadastrado")
         print()
         print(boletim)
 
+
+
+#adicionar mais notas
     if index == "4":
+        print()
+        print(boletim)
+        print()
+        inserirNotaAluno = input("digite o nome do aluno no qual deseja adicionar mais uma  nota: ").upper()
+        print()
+        if inserirNotaAluno in boletim.keys():
+            qtdNovaNota =  int(input("digite quantas notas deseja adicionar a "+inserirNotaAluno+ " :"))
+            for l in range(qtdNovaNota):
+                addNovaNota = float(input("insira a nota que deseja adicionar para "+ inserirNotaAluno+ " :"))
+                notas.append(addNovaNota)
+            print()
+            print("nota adicionada com sucesso!")
+            print(boletim)
+        else:
+            print(inserirNotaAluno+" não está cadastrado")
+#ver situação do aluno
+    if index == "5":
         print()
         print(boletim)
         print()
@@ -76,14 +111,27 @@ while index != "6":
             mediaFinal = sum(notas)/len(notas)
             #medias.append(mediaFinal)
             if mediaFinal >= 7:
+                print()
                 print(situacaoAluno+" foi aprovado")
-                print(boletim[situacaoAluno])
+                print("notas: ",boletim[situacaoAluno])
                 print("média final: ",mediaFinal)
             else:
+                print()
                 print(situacaoAluno+" foi reprovado")
-                print(boletim[situacaoAluno])
+                print("notas: ", boletim[situacaoAluno])
                 print("média final: ",mediaFinal)
         else:
-            print("o aluno não está cadastrado")
-    if index == "5":
-        print(boletim)
+            print()
+            print(situacaoAluno+" não está cadastrado")
+
+
+#mostrar todo o boletim
+    if index == "6":
+        for i in boletim.keys():
+            print()
+            notas = boletim[i]
+            mediaFinal = sum(notas) / len(notas)
+            print('aluno: {} , notas: {} , media final: {}'.format(i,boletim[i], mediaFinal))
+
+print()
+print("obrigada por utilizar o sistema!")
