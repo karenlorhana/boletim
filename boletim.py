@@ -109,7 +109,6 @@ while index != "7":
         if situacaoAluno in boletim.keys():
             notas = boletim[situacaoAluno]
             mediaFinal = sum(notas)/len(notas)
-            #medias.append(mediaFinal)
             if mediaFinal >= 7:
                 print()
                 print(situacaoAluno+" foi aprovado")
@@ -124,8 +123,7 @@ while index != "7":
             print()
             print(situacaoAluno+" não está cadastrado")
 
-
-#mostrartodo o boletim
+#mostrar todo o boletim
     if index == "6":
         for i in boletim.keys():
             print()
