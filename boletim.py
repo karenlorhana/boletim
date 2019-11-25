@@ -125,7 +125,7 @@ while index != "7":
             print(situacaoAluno+" não está cadastrado")
 
 
-#mostrar todo o boletim
+#mostrartodo o boletim
     if index == "6":
         for i in boletim.keys():
             print()
